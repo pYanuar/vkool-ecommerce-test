@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:vkool_ecommerce_test/face_detector.dart';
-import 'package:vkool_ecommerce_test/login_screen.dart';
+import 'package:vkool_ecommerce_test/Login/login_screen.dart';
+import 'package:vkool_ecommerce_test/Ui/face_detector.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
