@@ -2,6 +2,12 @@
   "configVersion": 2,
   "packages": [
     {
+      "name": "_flutterfire_internals",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/_flutterfire_internals-1.3.51",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
       "name": "async",
       "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/async-2.11.0",
       "packageUri": "lib/",
@@ -24,6 +30,24 @@
       "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/clock-1.1.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "cloud_firestore",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/cloud_firestore-5.6.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "cloud_firestore_platform_interface",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/cloud_firestore_platform_interface-6.6.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "cloud_firestore_web",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/cloud_firestore_web-4.4.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
     },
     {
       "name": "collection",
@@ -54,6 +78,24 @@
       "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/file-7.0.1",
       "packageUri": "lib/",
       "languageVersion": "3.0"
+    },
+    {
+      "name": "firebase_auth",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/firebase_auth-5.4.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "firebase_auth_platform_interface",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/firebase_auth_platform_interface-7.5.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "firebase_auth_web",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/firebase_auth_web-5.13.8",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
     },
     {
       "name": "firebase_core",
@@ -96,6 +138,12 @@
       "rootUri": "file:///C:/Users/Nici/AppData/Local/flutter/packages/flutter_web_plugins",
       "packageUri": "lib/",
       "languageVersion": "3.2"
+    },
+    {
+      "name": "http_parser",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/http_parser-4.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
     },
     {
       "name": "leak_tracker",
@@ -260,6 +308,12 @@
       "languageVersion": "3.4"
     },
     {
+      "name": "typed_data",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/typed_data-1.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.5"
+    },
+    {
       "name": "vector_math",
       "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/vector_math-2.1.4",
       "packageUri": "lib/",
@@ -290,7 +344,7 @@
       "languageVersion": "3.6"
     }
   ],
-  "generated": "2025-02-08T17:55:49.571660Z",
+  "generated": "2025-02-08T19:18:01.815793Z",
   "generator": "pub",
   "generatorVersion": "3.6.2",
   "flutterRoot": "file:///C:/Users/Nici/AppData/Local/flutter",
