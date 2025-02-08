@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "389780191458",
+    "project_id": "v-kool-proect",
+    "storage_bucket": "v-kool-proect.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:389780191458:android:598482cc173196532146bb",
+        "android_client_info": {
+          "package_name": "com.example.vkool_ecommerce_test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxdykCJOH3S24r4SPfKKNkq_-SF_wi9SY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
