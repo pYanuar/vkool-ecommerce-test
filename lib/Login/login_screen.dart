@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:vkool_ecommerce_test/Login/resgister_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -187,12 +188,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                 20), // Memberikan jarak antara tombol dan teks
                         GestureDetector(
                           onTap: () {
-                            // Tindakan saat teks di-tap, misalnya navigasi ke halaman daftar
-                            print("Navigating to Sign Up Page");
-                            // Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpPage()));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ResgisterScreen()));
                           },
                           child: Text(
-                            "Don't have an account? Sign up",
+                            "Don't have an account? Register",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.blue,
