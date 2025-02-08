@@ -42,7 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.blue[400], //or set color with: Color(0xFF0000FF)
+      statusBarColor: Colors.black, //or set color with: Color(0xFF0000FF)
     ));
     return Scaffold(
       backgroundColor: Colors.white,
