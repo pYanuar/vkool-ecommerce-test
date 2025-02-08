@@ -182,7 +182,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             ],
                           ),
                         ),
-                        // Menambahkan teks "Don't have an account? Sign up" di bawah tombol
                         SizedBox(
                             height:
                                 20), // Memberikan jarak antara tombol dan teks
@@ -191,7 +190,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => ResgisterScreen()));
+                                    builder: (context) => RegisterScreen()));
                           },
                           child: Text(
                             "Don't have an account? Register",

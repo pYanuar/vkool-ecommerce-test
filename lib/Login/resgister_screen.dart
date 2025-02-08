@@ -2,20 +2,21 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'login_screen.dart'; // import your login screen
 
-class ResgisterScreen extends StatefulWidget {
-  const ResgisterScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<ResgisterScreen> createState() => _ResgisterScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _ResgisterScreenState extends State<ResgisterScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   bool isFirebaseInitialized = false;
-
   final _formKey = GlobalKey<FormState>();
   bool _isLoading = false;
   String _errorMessage = '';
+  bool _isPasswordVisible = false; // Add this variable for password visibility
 
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -29,12 +30,21 @@ class _ResgisterScreenState extends State<ResgisterScreen> {
     String password = _passwordController.text.trim();
 
     // Validasi input
-    if (username.isEmpty || email.isEmpty || password.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Semua kolom harus diisi")),
-      );
+    if (username.isEmpty) {
+      _showDialog("Peringatan", "Username kolom harus diisi");
+      return;
+    } else if (email.isEmpty) {
+      _showDialog("Peringatan", "Email kolom harus diisi");
+      return;
+    } else if (password.isEmpty) {
+      _showDialog("Peringatan", "Password kolom harus diisi");
       return;
     }
+
+    // Menetapkan status loading menjadi true
+    setState(() {
+      _isLoading = true;
+    });
 
     try {
       // Mendaftar akun menggunakan Firebase Authentication
@@ -51,18 +61,45 @@ class _ResgisterScreenState extends State<ResgisterScreen> {
         'createdAt': Timestamp.now(),
       });
 
-      // Berhasil mendaftar
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-            content:
-                Text("Akun berhasil dibuat: ${userCredential.user?.email}")),
-      );
-    } on FirebaseAuthException catch (e) {
-      // Menangani error saat pendaftaran
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Pendaftaran gagal: ${e.message}")),
-      );
+      // Dialog sukses pendaftaran
+      _showDialog("Pendaftaran Berhasil", "Akun Anda telah berhasil dibuat.");
+    } catch (e) {
+      // Menampilkan pesan kesalahan jika terjadi error
+      _showDialog("Kesalahan", "Terjadi kesalahan saat mendaftar: $e");
+    } finally {
+      // Mengubah status loading menjadi false setelah proses selesai
+      setState(() {
+        _isLoading = false;
+      });
     }
+  }
+
+  // Menampilkan dialog peringatan atau kesalahan
+  void _showDialog(String title, String content) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(title),
+          content: Text(content),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                if (title == "Pendaftaran Berhasil") {
+                  // Navigate to the Login screen after successful registration
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()),
+                  );
+                }
+              },
+              child: Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -90,201 +127,183 @@ class _ResgisterScreenState extends State<ResgisterScreen> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      resizeToAvoidBottomInset:
-          true, // Menyesuaikan dengan ukuran layar ketika keyboard muncul
-      body: SingleChildScrollView(
-        child: _isLoading
-            ? Container(
-                child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  const Center(
-                    child: CircularProgressIndicator(
-                      backgroundColor: Colors.orange,
-                    ),
-                  ),
-                  SizedBox(height: size.height * 0.03),
-                  Text('loading'),
-                ],
-              ))
-            : Column(
-                children: [
-                  // Background image with logo in the center
-                  Container(
-                    width: double.infinity,
-                    height: 300,
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Image.asset(
-                          'assets/images/logo.png',
-                          width: 150,
-                          height: 150,
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        SizedBox(height: 16.0),
-
-                        // Username Field
-                        Text(
-                          "Username",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            color: Colors.black, // Text color
-                            fontWeight: FontWeight.bold, // Font size
-                          ),
-                        ),
-                        SizedBox(height: 3.0),
-                        TextFormField(
-                          controller: _usernameController,
-                          decoration: InputDecoration(
-                            filled: true,
-                            prefixIcon: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Icon(
-                                Icons.account_circle_sharp,
-                                color: Colors.black,
-                              ),
+      resizeToAvoidBottomInset: true,
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            child: _isLoading
+                ? Container() // Placeholder for when loading is active
+                : Column(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        height: 300,
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            Image.asset(
+                              'assets/images/logo.png',
+                              width: 150,
+                              height: 150,
                             ),
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 12.0, horizontal: 8.0),
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Username tidak boleh kosong';
-                            }
-                            return null;
-                          },
+                          ],
                         ),
-                        SizedBox(height: 8.0),
-
-                        // Email Field
-                        Text(
-                          "Email",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            color: Colors.black, // Text color
-                            fontWeight: FontWeight.bold, // Font size
-                          ),
-                        ),
-                        SizedBox(height: 3.0),
-                        TextFormField(
-                          controller: _emailController,
-                          decoration: InputDecoration(
-                            filled: true,
-                            prefixIcon: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Icon(
-                                Icons.email_sharp,
-                                color: Colors.black,
-                              ),
-                            ),
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 12.0, horizontal: 8.0),
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Email tidak boleh kosong';
-                            }
-                            if (!RegExp(r'^[^@]+@[^@]+\.[^@]+')
-                                .hasMatch(value)) {
-                              return 'Email tidak valid';
-                            }
-                            return null;
-                          },
-                        ),
-                        SizedBox(height: 8.0),
-
-                        // Password Field
-                        Text(
-                          "Password",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            color: Colors.black, // Text color
-                            fontWeight: FontWeight.bold, // Font size
-                          ),
-                        ),
-                        SizedBox(height: 3.0),
-                        TextFormField(
-                          controller: _passwordController,
-                          decoration: InputDecoration(
-                            filled: true,
-                            prefixIcon: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Icon(
-                                Icons.password,
-                                color: Colors.black,
-                              ),
-                            ),
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 12.0, horizontal: 8.0),
-                            suffixIcon: Icon(Icons.visibility),
-                          ),
-                          obscureText: true,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Password tidak boleh kosong';
-                            }
-                            if (value.length < 6) {
-                              return 'Password harus lebih dari 6 karakter';
-                            }
-                            return null;
-                          },
-                        ),
-                        SizedBox(height: 16.0),
-
-                        // Error Message
-                        if (_errorMessage.isNotEmpty)
-                          Text(
-                            _errorMessage,
-                            style: TextStyle(color: Colors.red),
-                          ),
-                        SizedBox(height: 16.0),
-
-                        // Submit Button
-                        ElevatedButton(
-                          onPressed: _register,
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            elevation: 2,
-                            padding: EdgeInsets.symmetric(
-                                vertical: 16.0, horizontal: 24.0),
-                          ),
-                          child: _isLoading
-                              ? CircularProgressIndicator(
-                                  color: Colors.white,
-                                )
-                              : Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SizedBox(width: 10),
-                                    Text(
-                                      'Register',
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            SizedBox(height: 16.0),
+                            Text("Username",
+                                style: TextStyle(fontWeight: FontWeight.bold)),
+                            SizedBox(height: 3.0),
+                            TextFormField(
+                              controller: _usernameController,
+                              decoration: InputDecoration(
+                                filled: true,
+                                prefixIcon: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Icon(Icons.account_circle_sharp,
+                                      color: Colors.black),
                                 ),
+                                border: InputBorder.none,
+                                contentPadding: EdgeInsets.symmetric(
+                                    vertical: 12.0, horizontal: 8.0),
+                              ),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Username tidak boleh kosong';
+                                }
+                                return null;
+                              },
+                            ),
+                            SizedBox(height: 8.0),
+                            Text("Email",
+                                style: TextStyle(fontWeight: FontWeight.bold)),
+                            SizedBox(height: 3.0),
+                            TextFormField(
+                              controller: _emailController,
+                              decoration: InputDecoration(
+                                filled: true,
+                                prefixIcon: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Icon(Icons.email_sharp,
+                                      color: Colors.black),
+                                ),
+                                border: InputBorder.none,
+                                contentPadding: EdgeInsets.symmetric(
+                                    vertical: 12.0, horizontal: 8.0),
+                              ),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Email tidak boleh kosong';
+                                }
+                                if (!RegExp(r'^[^@]+@[^@]+\.[^@]+')
+                                    .hasMatch(value)) {
+                                  return 'Email tidak valid';
+                                }
+                                return null;
+                              },
+                            ),
+                            SizedBox(height: 8.0),
+                            Text("Password",
+                                style: TextStyle(fontWeight: FontWeight.bold)),
+                            SizedBox(height: 3.0),
+                            TextFormField(
+                              controller: _passwordController,
+                              obscureText:
+                                  !_isPasswordVisible, // Update this line
+                              decoration: InputDecoration(
+                                filled: true,
+                                prefixIcon: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child:
+                                      Icon(Icons.password, color: Colors.black),
+                                ),
+                                border: InputBorder.none,
+                                contentPadding: EdgeInsets.symmetric(
+                                    vertical: 12.0, horizontal: 8.0),
+                                suffixIcon: IconButton(
+                                  // Change to IconButton
+                                  icon: Icon(
+                                    _isPasswordVisible
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      _isPasswordVisible =
+                                          !_isPasswordVisible; // Toggle visibility
+                                    });
+                                  },
+                                ),
+                              ),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Password tidak boleh kosong';
+                                }
+                                if (value.length < 6) {
+                                  return 'Password harus lebih dari 6 karakter';
+                                }
+                                return null;
+                              },
+                            ),
+                            SizedBox(height: 16.0),
+                            if (_errorMessage.isNotEmpty)
+                              Text(_errorMessage,
+                                  style: TextStyle(color: Colors.red)),
+                            SizedBox(height: 16.0),
+                            ElevatedButton(
+                              onPressed: _register,
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.blue,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.0)),
+                                elevation: 2,
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 16.0, horizontal: 24.0),
+                              ),
+                              child: _isLoading
+                                  ? CircularProgressIndicator(
+                                      color: Colors.white)
+                                  : Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        SizedBox(width: 10),
+                                        Text(
+                                          'Register',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
+                  ),
+          ),
+          if (_isLoading)
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CircularProgressIndicator(
+                    backgroundColor: Colors.orange,
+                  ),
+                  SizedBox(height: 16.0),
+                  Text(
+                    'Please wait...',
+                    style: TextStyle(color: Colors.black),
                   ),
                 ],
               ),
+            ),
+        ],
       ),
     );
   }
