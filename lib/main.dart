@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vkool_ecommerce_test/splash_screen.dart';
+import 'package:vkool_ecommerce_test/Ui/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
