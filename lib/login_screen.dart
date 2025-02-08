@@ -10,8 +10,19 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder(
-      child: Text("Login Screen"),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Login '),
+        ),
+        body: Center(
+          child: Text(
+            'Teks di Tengah Layar',
+            style: TextStyle(fontSize: 24),
+          ),
+        ),
+      ),
     );
   }
 }

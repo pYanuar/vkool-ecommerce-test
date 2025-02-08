@@ -10,8 +10,18 @@ class FaceDetector extends StatefulWidget {
 class _FaceDetectorState extends State<FaceDetector> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder(
-      child: Text("Face Detector"),
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Face Detector'),
+        ),
+        body: Center(
+          child: Text(
+            'Teks di Tengah Layar',
+            style: TextStyle(fontSize: 24),
+          ),
+        ),
+      ),
     );
   }
 }
