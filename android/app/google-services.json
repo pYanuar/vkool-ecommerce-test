@@ -12,7 +12,12 @@
           "package_name": "com.example.vkool_ecommerce_test"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "389780191458-9i0t9lki1k027n77t10lev8124vl6igr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAxdykCJOH3S24r4SPfKKNkq_-SF_wi9SY"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "389780191458-9i0t9lki1k027n77t10lev8124vl6igr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "389780191458-72pkks6osf9rgp7ib0n7l840k0h3sehs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.vkoolEcommerceTest"
+              }
+            }
+          ]
         }
       }
     }

@@ -8,6 +8,12 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "archive",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/archive-4.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "async",
       "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/async-2.11.0",
       "packageUri": "lib/",
@@ -18,6 +24,36 @@
       "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/boolean_selector-2.1.1",
       "packageUri": "lib/",
       "languageVersion": "2.17"
+    },
+    {
+      "name": "camera",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/camera-0.11.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.6"
+    },
+    {
+      "name": "camera_android_camerax",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/camera_android_camerax-0.6.13",
+      "packageUri": "lib/",
+      "languageVersion": "3.6"
+    },
+    {
+      "name": "camera_avfoundation",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/camera_avfoundation-0.9.18+2",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "camera_platform_interface",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/camera_platform_interface-2.9.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "camera_web",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/camera_web-0.3.5",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
     },
     {
       "name": "characters",
@@ -56,10 +92,28 @@
       "languageVersion": "3.4"
     },
     {
+      "name": "cross_file",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/cross_file-0.3.4+2",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "crypto",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/crypto-3.0.6",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
       "name": "cupertino_icons",
       "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/cupertino_icons-1.0.8",
       "packageUri": "lib/",
       "languageVersion": "3.1"
+    },
+    {
+      "name": "dartcv4",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/dartcv4-1.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
     },
     {
       "name": "fake_async",
@@ -78,6 +132,30 @@
       "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/file-7.0.1",
       "packageUri": "lib/",
       "languageVersion": "3.0"
+    },
+    {
+      "name": "file_selector_linux",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/file_selector_linux-0.9.3+2",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "file_selector_macos",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/file_selector_macos-0.9.4+2",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "file_selector_platform_interface",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/file_selector_platform_interface-2.6.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "file_selector_windows",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/file_selector_windows-0.9.3+3",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
     },
     {
       "name": "firebase_auth",
@@ -116,6 +194,24 @@
       "languageVersion": "3.4"
     },
     {
+      "name": "firebase_storage",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/firebase_storage-12.4.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "firebase_storage_platform_interface",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/firebase_storage_platform_interface-5.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "firebase_storage_web",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/firebase_storage_web-3.10.9",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
       "name": "flutter",
       "rootUri": "file:///C:/Users/Nici/AppData/Local/flutter/packages/flutter",
       "packageUri": "lib/",
@@ -124,6 +220,12 @@
     {
       "name": "flutter_lints",
       "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_lints-5.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.5"
+    },
+    {
+      "name": "flutter_plugin_android_lifecycle",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.24",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
@@ -140,10 +242,106 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "google_identity_services_web",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/google_identity_services_web-0.3.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "google_sign_in",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/google_sign_in-6.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "google_sign_in_android",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/google_sign_in_android-6.1.34",
+      "packageUri": "lib/",
+      "languageVersion": "3.5"
+    },
+    {
+      "name": "google_sign_in_ios",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/google_sign_in_ios-5.7.8",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "google_sign_in_platform_interface",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/google_sign_in_platform_interface-2.4.5",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "google_sign_in_web",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/google_sign_in_web-0.12.4+3",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "http",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/http-1.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
       "name": "http_parser",
       "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/http_parser-4.1.2",
       "packageUri": "lib/",
       "languageVersion": "3.4"
+    },
+    {
+      "name": "image",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/image-4.5.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "image_picker",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/image_picker-1.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "image_picker_android",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/image_picker_android-0.8.12+20",
+      "packageUri": "lib/",
+      "languageVersion": "3.5"
+    },
+    {
+      "name": "image_picker_for_web",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/image_picker_for_web-3.0.6",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "image_picker_ios",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/image_picker_ios-0.8.12+2",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "image_picker_linux",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/image_picker_linux-0.2.1+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "image_picker_macos",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/image_picker_macos-0.2.1+2",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "image_picker_platform_interface",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/image_picker_platform_interface-2.10.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "image_picker_windows",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/image_picker_windows-0.2.1+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
     },
     {
       "name": "leak_tracker",
@@ -188,10 +386,40 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "mime",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/mime-2.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "opencv_dart",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/opencv_dart-1.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
       "name": "path",
       "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/path-1.9.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
+    },
+    {
+      "name": "path_provider",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider-2.1.5",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "path_provider_android",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_android-2.2.15",
+      "packageUri": "lib/",
+      "languageVersion": "3.5"
+    },
+    {
+      "name": "path_provider_foundation",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_foundation-2.4.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
     },
     {
       "name": "path_provider_linux",
@@ -212,6 +440,42 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "permission_handler",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/permission_handler-10.4.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
+      "name": "permission_handler_android",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/permission_handler_android-10.3.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
+      "name": "permission_handler_apple",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/permission_handler_apple-9.1.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
+      "name": "permission_handler_platform_interface",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/permission_handler_platform_interface-3.12.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
+      "name": "permission_handler_windows",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/permission_handler_windows-0.1.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "petitparser",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/petitparser-6.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
       "name": "platform",
       "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/platform-3.1.6",
       "packageUri": "lib/",
@@ -220,6 +484,12 @@
     {
       "name": "plugin_platform_interface",
       "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/plugin_platform_interface-2.1.8",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "posix",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/posix-6.0.1",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -290,6 +560,12 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "stream_transform",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/stream_transform-2.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
       "name": "string_scanner",
       "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/string_scanner-1.3.0",
       "packageUri": "lib/",
@@ -338,13 +614,19 @@
       "languageVersion": "3.3"
     },
     {
+      "name": "xml",
+      "rootUri": "file:///C:/Users/Nici/AppData/Local/Pub/Cache/hosted/pub.dev/xml-6.5.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
       "name": "vkool_ecommerce_test",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.6"
     }
   ],
-  "generated": "2025-02-08T22:42:52.286677Z",
+  "generated": "2025-02-10T04:09:26.361256Z",
   "generator": "pub",
   "generatorVersion": "3.6.2",
   "flutterRoot": "file:///C:/Users/Nici/AppData/Local/flutter",

@@ -29,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
       if (cuy != null) {
         Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
-          return const FaceDetector();
+          return FaceDetectorScreen();
         }));
       } else {
         Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {

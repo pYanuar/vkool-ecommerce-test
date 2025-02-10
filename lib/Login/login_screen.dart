@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:vkool_ecommerce_test/Ui/face_detector.dart'; // Ganti dengan halaman utama Anda
 import 'package:vkool_ecommerce_test/Login/resgister_screen.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:vkool_ecommerce_test/Ui/face_detector.dart'; // Ensure Firebase is initialized
+import 'package:vkool_ecommerce_test/Ui/home_screen.dart'; // Untuk registrasi
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -18,12 +19,60 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
 
-  @override
-  void initState() {
-    super.initState();
+  // Fungsi untuk login dengan Google
+  Future<void> _signInWithGoogle() async {
+    setState(() {
+      isLoading = true;
+    });
+
+    try {
+      // Memulai proses Google Sign-In
+      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+      if (googleUser == null) {
+        setState(() {
+          isLoading = false;
+        });
+        return; // Pengguna membatalkan login
+      }
+
+      // Mendapatkan autentikasi Google
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+
+      // Membuat kredensial Firebase menggunakan token akses
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      // Masuk ke Firebase dengan kredensial yang didapatkan
+      final UserCredential userCredential =
+          await _auth.signInWithCredential(credential);
+
+      // Menyimpan email dan UID pengguna di shared preferences
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString('userEmail', userCredential.user!.email!);
+      prefs.setString('userUID', userCredential.user!.uid); // Menyimpan UID
+
+      // Navigasi ke halaman berikutnya setelah login sukses
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                HomeScreen()), // Ganti dengan halaman utama Anda
+      );
+    } catch (e) {
+      _showDialog("Login Failed", "Failed to sign in with Google: $e");
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
   }
 
+  // Login dengan email dan password
   Future<void> _login() async {
     String email = _emailController.text.trim();
     String password = _passwordController.text.trim();
@@ -44,15 +93,16 @@ class _LoginScreenState extends State<LoginScreen> {
         password: password,
       );
 
-      // You can save the user data to shared preferences or navigate to another screen
+      // Menyimpan email dan UID pengguna di shared preferences
       SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString('userEmail', email);
+      prefs.setString('userUID', userCredential.user!.uid); // Menyimpan UID
 
-      // Navigate to another screen after successful login
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-            builder: (context) => FaceDetector()), // Change to your home screen
+            builder: (context) =>
+                HomeScreen()), // Ganti dengan halaman utama Anda
       );
     } catch (e) {
       _showDialog("Login Failed", "Invalid email or password.");
@@ -63,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  // Display dialog to show errors or success
+  // Tampilkan dialog kesalahan
   void _showDialog(String title, String content) {
     showDialog(
       context: context,
@@ -82,6 +132,17 @@ class _LoginScreenState extends State<LoginScreen> {
         );
       },
     );
+  }
+
+  // Fungsi reset password
+  Future<void> _resetPassword(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+      _showDialog(
+          "Password Reset", "A password reset email has been sent to $email.");
+    } catch (e) {
+      _showDialog("Error", "Failed to send password reset email.");
+    }
   }
 
   @override
@@ -174,12 +235,17 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       SizedBox(height: 16.0),
-                      Text(
-                        "Forgot Password?",
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          color: Colors.black, // Text color
-                          fontWeight: FontWeight.bold, // Font size
+                      // Forgot Password button
+                      TextButton(
+                        onPressed: () {
+                          _showResetPasswordDialog();
+                        },
+                        child: Text(
+                          "Forgot Password?",
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                       SizedBox(height: 16.0),
@@ -219,9 +285,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       SizedBox(height: 4.0),
                       ElevatedButton(
-                        onPressed: () {
-                          // Handle Google sign-in or other login methods
-                        },
+                        onPressed: _signInWithGoogle,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.red,
                           shape: RoundedRectangleBorder(
@@ -250,7 +314,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 20), // Add space between button and text
+                      SizedBox(height: 20),
                       GestureDetector(
                         onTap: () {
                           Navigator.push(
@@ -274,19 +338,15 @@ class _LoginScreenState extends State<LoginScreen> {
               ],
             ),
           ),
-          // Loading indicator on top of the screen
           if (isLoading)
             Positioned.fill(
               child: Container(
-                color:
-                    Colors.black.withOpacity(0.5), // Optional background color
+                color: Colors.black.withOpacity(0.5),
                 child: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      const CircularProgressIndicator(
-                        backgroundColor: Colors.orange,
-                      ),
+                      const CircularProgressIndicator(),
                       SizedBox(height: size.height * 0.03),
                       Text('Loading...'),
                     ],
@@ -296,6 +356,49 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
         ],
       ),
+    );
+  }
+
+  void _showResetPasswordDialog() {
+    TextEditingController resetEmailController = TextEditingController();
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Reset Password"),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: resetEmailController,
+                decoration: InputDecoration(
+                  hintText: "Enter your email address",
+                ),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text("Cancel"),
+            ),
+            TextButton(
+              onPressed: () {
+                String email = resetEmailController.text.trim();
+                if (email.isNotEmpty) {
+                  _resetPassword(email);
+                  Navigator.of(context).pop();
+                } else {
+                  _showDialog("Error", "Please enter a valid email address.");
+                }
+              },
+              child: Text("Reset Password"),
+            ),
+          ],
+        );
+      },
     );
   }
 }
